@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Local Storage</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <textarea class="form-control" id="input-box" name="input-box"></textarea>
+                </div>
+                <div class="col-12 mb-5">
+                    <input type="button" id="btn" class="form-control btn btn-primary" name="btn" value="Save Input">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <textarea class="form-control" id="item" name="item"></textarea>
+                </div>
+                <div class="col-12 mb-5">
+                    <input type="button" id="add-item-btn" class="form-control btn btn-primary" name="add-item-btn" value="Add Item">
+                </div>
+                <div>
+                    <div class="col-12 mb-2">
+                        <p class="justify-center" input="item-list">
+                        </p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        let btn=document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            let input=document.getElementById("input-box").value;
+            localStorage.setItem("input-box",input);
+        });
+        if(localStorage.getItem("input-box")){
+            let input=document.getElementById("input-box");
+            input.value=localStorage.getItem("input-box");
+        }
+        let item_btn=document.getElementById("add-item-btn");
+        item_btn.addEventListener("click", () => {
+            
+        });
+    </script>
+</html>

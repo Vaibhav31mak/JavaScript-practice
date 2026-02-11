@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>Example</title>
+    </head>
+    <body>
+<form name="selectForm" class="container mb-5">
+  <label for = "primeNumber" class="formcontrol"></label>
+  <input name="primeNumber" id="primeNumber" type="number">
+  <button id="btn" type="button">Enter</button>
+</form>
+<div class="container">
+    <input name="answer" id="answer" class="answer">
+    </input>
+</div>
+    </body>
+</html>
+<script>
+    var btn=document.getElementById("btn");
+    btn.addEventListener("click", () => {
+        var input = document.getElementById("primeNumber").value;
+        let isPrime=true;
+        for(let i=2;i*i<=input;i++){
+            if(input%i==0){
+                isPrime=false;
+                break;
+            }
+        }
+        var answer=document.getElementById("answer");
+        answer.value=isPrime?"Prime":"Not Prime";
+    });
+</script>

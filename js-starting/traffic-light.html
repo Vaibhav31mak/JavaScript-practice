@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>Practice</title> 
+    </head>
+    <body>
+        <div class="container-box d-flex flex-column justify-content-center align-items-center mb-5">
+            <div class="red box" id="red" style="border: 2px solid red;"></div>
+            <div class="yellow box" id="yellow" style="border: 2px solid yellow;"></div>
+            <div class="green box" id="green" style="border: 2px solid green;"></div>
+        </div>
+        <button class="form-control btn btn-primary" id="btn">Click Me!</button> 
+    </body>
+</html>
+<style>
+    .container-box{
+        gap: 10px;
+        justify-self: center;
+        border: 2px solid black;
+        width: 25vw;
+    }
+    .box{
+        padding: 100px;
+        margin: 10px;
+    }
+</style>
+<script>
+    let red=document.getElementById("red");
+    red.addEventListener("mouseover", ()=>{
+        red.style.backgroundColor= "red";
+    })
+    let btn=document.getElementById("btn");
+    btn.addEventListener("keydown", ()=>{
+        red.style.backgroundColor = "red";
+    });
+    btn.addEventListener("keyup", ()=>{
+        red.style.backgroundColor = "white";
+    });
+</script>

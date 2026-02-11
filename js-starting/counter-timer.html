@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>Practice</title> 
+    </head>
+    <body>
+        <p id="counter">Count: </p>
+        <button class="btn btn-primary" id="start">Start Counter</button>
+        <button class="btn btn-primary" id="end">End Counter</button>
+    </body>
+</html>
+<style>
+</style>
+<script>
+    let count=0;
+    let start=document.getElementById("start");
+    let end=document.getElementById("end");
+    let op=document.getElementById("counter");
+    function counter(){
+        count++;
+        op.innerHTML="Count: "+count;
+    }
+    let interval;
+    start.addEventListener("click", () => {
+        interval=setInterval(counter,1000)
+    });
+    end.addEventListener("click", () => {
+        count=0;
+        clearInterval(interval);
+    });
+</script>
