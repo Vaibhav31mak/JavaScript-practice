@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>Example</title>
+    </head>
+    <body>
+        <label for="timer" class="form-label">Input Seconds</label>
+        <input id="input-timer" type="number">
+        <button class="btn btn-primary" type="button" onclick="startTimerFromInput()">Start Timer</button>
+        <button class="btn btn-primary" type="button" onclick="stopTimer()">Stop Timer</button>
+        <button class="btn btn-primary" type="button" onclick="resumeTimer()">Resume Timer</button>
+        <p id="timer"></p>
+    </body>
+</html>
+<script>    
+    let count=0;
+    let timer;
+    let outputTimer=document.getElementById("timer");
+    function startTimerFromInput(){
+        count=document.getElementById("input-timer").value||0;
+        startTimer();
+    }
+    function startTimer(){
+        stopTimer();
+        timer=setInterval(()=>{
+            outputTimer.innerHTML=count+" s";
+            if(count==0){
+                stopTimer();
+            }
+            else{
+                count--;
+            }
+        },1000);
+    }
+    function stopTimer(){
+        clearInterval(timer);
+        timer=null;
+    }
+    function resumeTimer(){
+        console.log(timer);
+        if(!timer){
+            console.log(timer);
+            startTimer();
+        }
+    }
+</script>
