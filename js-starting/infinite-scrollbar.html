@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <title>Infinite Scroll</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .item {
+            padding: 20px;
+            margin: 10px;
+            background: #f2f2f2;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+    const container = document.getElementById("container");
+
+    const totalItems = 50;
+    const itemsPerLoad = 10;
+    let currentIndex = 0;
+
+    function loadItems() {
+        for (let i = 0; i < itemsPerLoad && currentIndex < totalItems; i++) {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerText = "Item " + (currentIndex + 1);
+            container.appendChild(div);
+            currentIndex++;
+        }
+    }
+
+    loadItems();
+
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const pageHeight = document.documentElement.scrollHeight;
+
+        if (scrollPosition >= pageHeight - 50) {
+            loadItems();
+        }
+    });
+</script>
+
+</body>
+</html>
