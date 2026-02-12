@@ -27,46 +27,49 @@
     render();
 
     function render() {
-    const container = document.getElementById("container");
+        const container = document.getElementById("container");
 
-    container.innerHTML = `
-    <div class="row mb-5">
-        <div class="col-12 mb-2">
-            <textarea class="form-control" id="task"></textarea>
-        </div>
-        <div class="col-12">
-            <button onclick="addTask()" class="form-control btn btn-primary">Add Task</button>
-        </div>
-    </div>
-    `;
-
-    task_list.forEach(todo => {
-        container.innerHTML += `
-        <div class="row mb-4">
+        container.innerHTML = `
+        <div class="row mb-5">
             <div class="col-12 mb-2">
-                <textarea class="form-control" id="${todo.id}">${todo.task}</textarea>
+                <textarea class="form-control" id="task"></textarea>
             </div>
-            <div class="col-6">
-                <button onclick="editTask(${todo.id})" class="btn btn-warning w-100">Edit</button>
-            </div>
-            <div class="col-6">
-                <button onclick="deleteTask(${todo.id})" class="btn btn-danger w-100">Delete</button>
+            <div class="col-12">
+                <button onclick="addTask()" class="form-control btn btn-primary">Add Task</button>
             </div>
         </div>
         `;
-    });
-}
+
+        task_list.forEach(todo => {
+            container.innerHTML += `
+            <div class="row mb-4">
+                <div class="col-12 mb-2">
+                    <textarea class="form-control" id="${todo.id}">${todo.task}</textarea>
+                </div>
+                <div class="col-6">
+                    <button onclick="editTask(${todo.id})" class="btn btn-warning w-100">Edit</button>
+                </div>
+                <div class="col-6">
+                    <button onclick="deleteTask(${todo.id})" class="btn btn-danger w-100">Delete</button>
+                </div>
+            </div>
+            `;
+        });
+    }
 
 
     function addTask(){
         let task=document.getElementById("task");
+        if(task.value.trim()==""){
+            return;
+        }
         task_list.push({"task": task.value, "id": Date.now()});
         localStorage.setItem("task-list", JSON.stringify([...task_list]));
         render();
         task.value="";
     }
     function deleteTask(id){
-        task_list.filter(todo => todo.id!=id);
+        task_list=task_list.filter(todo => todo.id!=id);
         localStorage.setItem("task-list", JSON.stringify([...task_list]));
         render();
     }
