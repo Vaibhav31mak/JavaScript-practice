@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>Practice</title> 
+    </head>
+    <body>
+        <input type="text" id="search-box" class="form-control">
+        <ul id="fruits">
+            <li>Apple</li>
+            <li>aple</li>
+            <li>Orange</li>
+            <li>ornge</li>
+            <li>banana</li>
+        </ul>
+    </body>
+</html>
+<script>
+    let list=document.getElementById("fruits");
+    let fruits=Array.from(list.children).map(item=>item.innerHTML);
+    let searchBox=document.getElementById("search-box");
+    searchBox.addEventListener("keyup",(e)=>{
+        list.innerHTML="";
+        let searchedFruits=fruits.filter(fruit=>fruit.toLowerCase().includes(searchBox.value.toLowerCase()));
+        searchedFruits.forEach(item=>{
+            let listItem=`<li>${item}</li>`;
+            list.innerHTML+=listItem;
+        })
+    })
+</script>
