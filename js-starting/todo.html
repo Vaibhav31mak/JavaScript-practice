@@ -4,9 +4,77 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <title>ToDo List</title>
+        <title>To Do List</title>
     </head>
     <body>
-        
+        <div class="container" id="container">
+            <div class="row mb-5">
+                <div class="col-12 mb-2">
+                    <textarea class="form-control" id="task"></textarea>
+                </div>
+                <div class="col-12" id="add-task">
+                    <button onclick="addTask()" class="form-control btn btn-primary">Add Task</button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
+<script>
+    let task_list = JSON.parse(localStorage.getItem("task-list"));
+    if (!Array.isArray(task_list)) {
+        task_list = [];
+    }
+    render();
+
+    function render() {
+    const container = document.getElementById("container");
+
+    container.innerHTML = `
+    <div class="row mb-5">
+        <div class="col-12 mb-2">
+            <textarea class="form-control" id="task"></textarea>
+        </div>
+        <div class="col-12">
+            <button onclick="addTask()" class="form-control btn btn-primary">Add Task</button>
+        </div>
+    </div>
+    `;
+
+    task_list.forEach(todo => {
+        container.innerHTML += `
+        <div class="row mb-4">
+            <div class="col-12 mb-2">
+                <textarea class="form-control" id="${todo.id}">${todo.task}</textarea>
+            </div>
+            <div class="col-6">
+                <button onclick="editTask(${todo.id})" class="btn btn-warning w-100">Edit</button>
+            </div>
+            <div class="col-6">
+                <button onclick="deleteTask(${todo.id})" class="btn btn-danger w-100">Delete</button>
+            </div>
+        </div>
+        `;
+    });
+}
+
+
+    function addTask(){
+        let task=document.getElementById("task");
+        task_list.push({"task": task.value, "id": Date.now()});
+        localStorage.setItem("task-list", JSON.stringify([...task_list]));
+        render();
+        task.value="";
+    }
+    function deleteTask(id){
+        task_list.filter(todo => todo.id!=id);
+        localStorage.setItem("task-list", JSON.stringify([...task_list]));
+        render();
+    }
+    function editTask(id){
+        let task=document.getElementById(id);
+        task_list=task_list.filter(todo => todo.id!=id);
+        task_list.push({"task": task.value, "id": Date.now()});
+        localStorage.setItem("task-list", JSON.stringify([...task_list]));
+        render();
+    }
+</script>

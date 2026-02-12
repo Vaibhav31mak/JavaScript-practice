@@ -6,10 +6,11 @@
         <title>Practice</title> 
     </head>
     <body>
+        <p id="count"></p>
         <div class="container-box d-flex flex-column justify-content-center align-items-center mb-5">
-            <div class="red box" id="red" style="border: 2px solid red;"></div>
-            <div class="yellow box" id="yellow" style="border: 2px solid yellow;"></div>
-            <div class="green box" id="green" style="border: 2px solid green;"></div>
+            <div class="red box" id="red-light" style="border: 2px solid red;"></div>
+            <div class="yellow box" id="yellow-light" style="border: 2px solid yellow;"></div>
+            <div class="green box" id="green-light" style="border: 2px solid green;"></div>
         </div>
         <button class="form-control btn btn-primary" id="btn">Click Me!</button> 
     </body>
@@ -24,18 +25,39 @@
     .box{
         padding: 100px;
         margin: 10px;
+        border-radius: 50px;
     }
 </style>
 <script>
-    let red=document.getElementById("red");
-    red.addEventListener("mouseover", ()=>{
-        red.style.backgroundColor= "red";
-    })
-    let btn=document.getElementById("btn");
-    btn.addEventListener("keydown", ()=>{
-        red.style.backgroundColor = "red";
-    });
-    btn.addEventListener("keyup", ()=>{
-        red.style.backgroundColor = "white";
-    });
+    let count=0;
+    let greenLight=document.getElementById("green-light");
+    let redLight=document.getElementById("red-light");
+    let yellowLight=document.getElementById("yellow-light");
+    currentLight="green";
+    greenLight.style.backgroundColor="green";
+    function switchLight(){
+        count=0;
+        if(currentLight=="green") greenLight.style.backgroundColor="green";
+        if(currentLight=="red") redLight.style.backgroundColor="red";
+        if(currentLight=="yellow") yellowLight.style.backgroundColor="yellow";
+    }
+    setInterval(() => {
+        count=count+1;
+        document.getElementById("count").innerHTML=count;
+        if(currentLight=="green" && count==6){
+            greenLight.style.backgroundColor="white";
+            currentLight="yellow";
+            switchLight();
+        }
+        if(currentLight=="yellow" && count==2){
+            yellowLight.style.backgroundColor="white";
+            currentLight="red";
+            switchLight();
+        }
+        if(currentLight=="red" && count==6){
+            redLight.style.backgroundColor="white";
+            currentLight="green";
+            switchLight();
+        }
+    }, 1000);
 </script>
