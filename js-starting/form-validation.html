@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>Practice</title> 
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-6">
+                <label class="form-label" for="name">Name: </label>
+                <input class="form-control" id="name" type="text">
+                <p id="validate-name"></p>
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="email">Email: </label>
+                <input class="form-control" id="email" type="text">
+                <p id="validate-email"></p>
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="password">Password: </label>
+                <input class="form-control" id="password" type="password">
+                <p id="validate-password"></p>
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="confirm-password">Confirm-Password: </label>
+                <input class="form-control" id="confirm-password" type="password">
+                <p id="validate-confirm-password"></p>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="button" onclick="validateForm()">Submit</button>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    function validateForm(){
+        let name=document.getElementById("name");
+        if(name.value.length<3){
+            document.getElementById("validate-name").innerHTML="Name Length should be >= 3";
+            document.getElementById("validate-name").style.color="red";
+        }
+        else{
+            document.getElementById("validate-name").innerHTML="";
+        }
+        let email=document.getElementById("email");
+        if(email.value!=/([a-z][A-Z])+@([a-z][A-Z])+.com/){
+            document.getElementById("validate-email").innerHTML="Invalid Email";
+            document.getElementById("validate-email").style.color="red";
+        }
+        else{
+            document.getElementById("validate-email").innerHTML="";
+        }
+        let password=document.getElementById("password");
+        if(password.value.length<6){
+            document.getElementById("validate-password").innerHTML="Password Length should be >= 6";
+            document.getElementById("validate-password").style.color="red";
+        }
+        else{
+            document.getElementById("validate-password").innerHTML="";
+        }
+        let confirmPassword=document.getElementById("confirm-password");
+        if(confirmPassword.value!=password.value){
+            document.getElementById("validate-confirm-password").innerHTML="Confirm Password and password not same";
+            document.getElementById("validate-confirm-password").style.color="red";
+        }
+        else{
+            document.getElementById("validate-confirm-password").innerHTML="";
+        }
+    }
+</script>
