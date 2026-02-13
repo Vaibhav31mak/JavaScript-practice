@@ -42,3 +42,5 @@ let functionExpression = function fun(){ //functionExpression hoisted but fun is
 }
 // console.log(fun) //Reference Error -> in its local scope
 console.log(functionExpression());
+
+//callback hell
