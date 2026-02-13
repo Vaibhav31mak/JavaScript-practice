@@ -1,18 +1,13 @@
-document.getElementById("btn").addEventListener("click", ()=>{
-    document.getElementById("output").value=(document.getElementById("input").value)*10;
-    document.getElementById("side-effects").innerHTML=`${person.fullName()} is a character of ${person.place}.`;
-    document.getElementById("side-effects").innerHTML += "xyz";
-})
+let arr=[1,2,3]
+let newArr=arr.map((item)=>item+1);
+console.log(newArr, arr)
 
-const person = {
-    firstName: "Max",   
-    lastName: "Cautfild",
-    Address: {
-        street: "A-5",
-        City: "xyp9x"
-    },
-    place: "Life is Strange",
-    fullName: function(){
-        return this.firstName+" " +this.lastName;
-    }
-}
+setInterval(() => {
+    console.log(100)
+}, 0);
+setTimeout(()=>{
+    console.log(1000);
+},0);
+setInterval(()=>{
+    
+})
