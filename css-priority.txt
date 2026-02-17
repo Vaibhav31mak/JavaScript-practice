@@ -1,0 +1,104 @@
+//css-priorities
+1️⃣ Browser default styles (Lowest)
+
+Styles applied by the browser itself
+
+<h1>Hello</h1> <!-- browser gives default font-size, margin -->
+
+2️⃣ External CSS
+<link rel="stylesheet" href="style.css">
+
+h1 {
+  color: blue;
+}
+
+3️⃣ Internal CSS
+<style>
+  h1 {
+    color: green;
+  }
+</style>
+
+4️⃣ Element / Tag selector
+p {
+  color: black;
+}
+
+5️⃣ Class selector
+.text {
+  color: orange;
+}
+
+6️⃣ Attribute selector
+input[type="text"] {
+  border: 1px solid red;
+}
+
+7️⃣ ID selector
+#title {
+  color: purple;
+}
+
+8️⃣ Inline styles
+<h1 style="color: red;">Hello</h1>
+
+9️⃣ !important (Highest – avoid if possible ❌)
+h1 {
+  color: pink !important;
+}
+
+//button bootstrat colors
+btn-primary	Blue	Main action (Submit, Save, Login)
+btn-secondary	Gray	Secondary / less important
+btn-success	Green	Success / Confirm
+btn-danger	Red	Delete / Critical action
+btn-warning	Yellow	Warning / Risky action
+btn-info	Light Blue	Information
+btn-light	Light Gray	Subtle UI
+btn-dark	Dark Gray/Black	Strong contrast
+btn-link	Link-style	Looks like <a>
+
+//to go to new page
+✅ 1️⃣ Best & Simplest (HTML way) – Use <a> styled as a button
+
+✔️ Recommended for navigation
+
+<a href="page2.html" class="btn btn-primary">Go to Page</a>
+
+
+🔹 WHY this is best
+
+Semantically correct (navigation = link)
+
+SEO friendly
+
+No JavaScript needed
+
+Works even if JS is disabled
+
+✅ 2️⃣ JavaScript onclick (Most common interview answer)
+<button onclick="goToPage()" class="btn btn-success">
+  Go to Page
+</button>
+
+<script>
+  function goToPage() {
+    window.location.href = "page2.html";
+  }
+</script>
+
+🔥 Variants you should know
+// Replace current page (no back button)
+window.location.replace("page2.html");
+
+// Open in new tab
+window.open("page2.html", "_blank");
+
+✅ 3️⃣ JavaScript with Event Listener (Best practice JS)
+<button id="myBtn" class="btn btn-warning">Go</button>
+
+<script>
+  document.getElementById("myBtn").addEventListener("click", () => {
+    window.location.href = "page2.html";
+  });
+</script>
