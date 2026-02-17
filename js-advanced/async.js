@@ -1,13 +1,5 @@
-function getPromise(x){
-    return new Promise((resolve,reject) => {
-        if(x%2){
-            resolve(x);
-        }
-        else{
-            reject(x);
-        }
-    });
-}
+//import
+import {getPromise} from './getPromise.js'
 
 //without await use then because the promise received
 async function asyncFunction1(){

@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>
+            Counter
+        </title>
+    </head>
+    <body>
+        <p id = "counter"></p>
+        <input type = number id="input-count">
+        <button id = "start-btn" type = "button" class="btn btn-primary" onclick="startTimer()">Start Timer</button>
+        <button id = "start-btn" type = "button" class="btn btn-primary" onclick="resumeTimer()">Resume Timer</button>
+        <button id = "start-btn" type = "button" class="btn btn-primary" onclick="stopTimer()">Stop Timer</button>
+    </body>
+</html>
+
+<script>
+    function CreateCounter(){
+        count=0;
+        this.getCounter = function(){
+            return count;
+        }
+        this.incrementCounter = function(){
+            count++;
+        }
+        this.decrementCounter = function(){
+            count--;
+        }
+        this.setCounter = function(x){
+            count=x;
+        }
+    }
+    let counter = null;
+    let input = document.getElementById("input-count");
+    let output = document.getElementById("counter");
+    let timer = null;
+    function startTimer(){
+        if(counter==null) counter = new CreateCounter();
+        counter.setCounter(input.value);
+        timer = setInterval(()=>{
+            counter.decrementCounter();
+            output.innerHTML=counter.getCounter();
+        },1000)
+    }
+    function stopTimer(){
+        if(timer!= null){
+            clearInterval(timer);
+            timer=null;
+        }
+    }
+    function resumeTimer(){
+        if(timer==null){
+            timer = setInterval(()=>{
+                counter.decrementCounter();
+                output.innerHTML=counter.getCounter();
+            },1000)
+        }
+    }
+</script>
