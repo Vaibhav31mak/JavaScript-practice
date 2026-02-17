@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>
+            Counter
+        </title>
+    </head>
+    <body>
+        <div class="grandparent" id="grandparent">
+            <div class="parent" id="parent">
+                <div class="child" id="child"></div>
+            </div>
+        </div>
+        <p id = "op"></p>
+    </body>
+</html>
+<style>
+    .grandparent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        justify-self: center;
+        height: 200px;
+        width: 200px;
+        border: 2px solid black;
+        background-color: yellow;
+    }
+    .parent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        height: 150px;
+        width: 150px;
+        border: 2px solid black;
+        background-color: blue;
+    }
+    .child{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        height: 100px;
+        width: 100px;
+        border: 2px solid black;
+        background-color: green;
+    }
+</style>
+<script>
+  const op = document.getElementById("op");
+
+  // CAPTURING
+  document.getElementById("grandparent")
+    .addEventListener("click", () => {
+      op.textContent += " grandparent(capture)";
+    }, true);
+
+  document.getElementById("parent")
+    .addEventListener("click", () => {
+      op.textContent += " parent(capture)";
+    }, true);
+
+  document.getElementById("child")
+    .addEventListener("click", () => {
+      op.textContent += " child(capture)";
+    }, true);
+
+  // BUBBLING
+//   document.getElementById("grandparent")
+//     .addEventListener("click", () => {
+//       op.textContent += " grandparent(bubble)";
+//     });
+
+//   document.getElementById("parent")
+//     .addEventListener("click", () => {
+//       op.textContent += " parent(bubble)";
+//     });
+
+//   document.getElementById("child")
+//     .addEventListener("click", () => {
+//       op.textContent += " child(bubble)";
+//     });
+</script>
+
