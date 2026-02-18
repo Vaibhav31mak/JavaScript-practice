@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>BOX</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <img id="image" src="images/OIP.jpg">
+</body>
+</html>
+<script>
+  const image = document.getElementById("image");
+  let flag = true;
+
+  setInterval(() => {
+    if (flag) {
+      image.src = "images/OIP.jpg";
+    } else {
+      image.src = "images/OIP (1).jpg";
+    }
+    flag = !flag;
+  }, 1000);
+</script>
